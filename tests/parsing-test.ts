@@ -103,7 +103,22 @@ test('Parsing should create definition from es7 class component with separate de
 test('Parsing should create definition from stateless function component', t => {
   compare(t, 'component', 'stateless.jsx', 'stateless.d.ts');
 });
-test('Parsing should create definition from class extending Component', t => {
+test('Parsing should create definition from component exported as an object of components', t => {
+  compare(
+    t,
+    'component',
+    'multiple-components-object.jsx',
+    'multiple-components-object.d.ts'
+  );
+});
+test('Parsing should create definition from default export that\'s an object of components', t => {
+  compare(
+    t,
+    'component',
+    'multiple-components-object-default.jsx',
+    'multiple-components-object-default.d.ts'
+  );
+});
   compare(
     t,
     'component',
