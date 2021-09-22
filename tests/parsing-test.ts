@@ -103,6 +103,14 @@ test('Parsing should create definition from es7 class component with separate de
 test('Parsing should create definition from stateless function component', t => {
   compare(t, 'component', 'stateless.jsx', 'stateless.d.ts');
 });
+test('Parsing should create definition from class extending Component', t => {
+  compare(
+    t,
+    'component',
+    'import-react-component.jsx',
+    'import-react-component.d.ts'
+  );
+});
 test('Parsing should create definition from component exported as an object of components', t => {
   compare(
     t,
@@ -111,7 +119,7 @@ test('Parsing should create definition from component exported as an object of c
     'multiple-components-object.d.ts'
   );
 });
-test('Parsing should create definition from default export that\'s an object of components', t => {
+test("Parsing should create definition from default export that's an object of components", t => {
   compare(
     t,
     'component',
@@ -119,11 +127,28 @@ test('Parsing should create definition from default export that\'s an object of 
     'multiple-components-object-default.d.ts'
   );
 });
+test("Parsing should create definition from unnamed default export that's an object of components", t => {
   compare(
     t,
     'component',
-    'import-react-component.jsx',
-    'import-react-component.d.ts'
+    'multiple-components-object-unnamed-default.jsx',
+    'multiple-components-object-unnamed-default.d.ts'
+  );
+});
+test('Parsing should add dot notation members for component', t => {
+  compare(
+    t,
+    'component',
+    'multiple-components-dot-notation.jsx',
+    'multiple-components-dot-notation.d.ts'
+  );
+});
+test('Parsing should add dot notation members for default export component', t => {
+  compare(
+    t,
+    'component',
+    'multiple-components-dot-notation-default.jsx',
+    'multiple-components-dot-notation-default.d.ts'
   );
 });
 test('Parsing should create definition from class import PropTypes and instanceOf dependency', t => {
